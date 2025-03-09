@@ -103,7 +103,14 @@
 
 
            <hr>
-        <footer id="date" style="align-items: center;"><pre> Last Updated Feb 16<sup>th</sup>, 2025 </pre></footer>
+           <script>
+            var msg = `<p><b>Page Title: </b>` + document.title + `<br/>`;
+            msg += `last modified: </b>` + document.lastModified + `</p>`;
+            var el = document.getElementById('footer');
+            el.innerHTML = msg;
+           </script>
+        <!-- <footer id="date" style="align-items: center;"><pre> Last Updated Feb 16<sup>th</sup>, 2025 </pre></footer> -->
+         <footer></footer>
             
     </body>
 </html>
