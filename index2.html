@@ -40,11 +40,15 @@
     div{
         text-align: center;
     }
+    project-card{
+        text-align: center;
+    }
 
   </style>
 </head>
 <body>
-  <h1>Ruben's Cards</h1>
+  <h1>Ruben's Projects</h1>
+  <project-card>
   <div>
     <button id="loadLocal" class="btn">Load Local</button>
     <button id="loadRemote" class="btn">Load Remote</button>
@@ -52,6 +56,7 @@
   <div id="card-container">
     <!-- Project cards will be dynamically inserted here -->
   </div>
+    </project-card>
   
   <!-- Include the custom element definition -->
   <script src="project-card.js"></script>
