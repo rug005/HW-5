@@ -16,6 +16,14 @@ const sampleData = [
         // Replace this link with a live URL (not the Firebase console URL) if you need a clickable link.
         link: "/interest.html"
       }
+      ,{
+        title: "Project Alpha",
+        img: "https://firebasestorage.googleapis.com/v0/b/ruben-s-images.firebasestorage.app/o/lego-lightshow.gif?alt=media&token=4f35e5bf-0b55-4b10-9abe-b61a5d999e5b",
+        alt: "BTS Ani image from Firebase",
+        description: "A short description for Project Alpha",
+        // Replace this link with a live URL (not the Firebase console URL) if you need a clickable link.
+        link: "/courses.html"
+      }
   ];
   
   // Save sampleData to localStorage if not already there

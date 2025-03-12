@@ -88,7 +88,7 @@ class ProjectCard extends HTMLElement {
             <img src="${imgSrc}" alt="${imgAlt}" style="width:100%; display:block;">
           </picture>
           <p>${description}</p>
-          <a href="${link}" target="_blank">Learn More</a>
+          <a href="${link}" target="_blank">Link</a>
         </div>
       `;
     }
