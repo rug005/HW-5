@@ -81,15 +81,18 @@ nav a{
 }
 
 
+
 /* Goes from column to row if pixels are 520 */
 @media (max-width: 520px) {
-    nav a {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap; /* Allow items to stack on smaller screens */  
+    nav > a{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
     }
-    .course-div{
-        margin-top: 180px;
+    h1{
+        font-size: 30px;
+    }
+    .center{
+        margin-top: 100px;
     }
 }
 
@@ -220,6 +223,12 @@ p{
     display: flex;
     justify-content: center; /* Centers the article in the container */
     background-color: white;
+}
+
+#content-2 {
+    display: flex;
+    justify-content: center; /* Centers the article in the container */
+    background-color: rgb(0, 0, 0);
 }
 
 article {

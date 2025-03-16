@@ -1,26 +1,26 @@
 // Sample local data with Firebase image URL for Project Alpha
 const sampleData = [
     {
-      title: "Project Alpha",
+      title: "Projects Page",
       img: "https://firebasestorage.googleapis.com/v0/b/ruben-s-images.firebasestorage.app/o/bts-ani.avif?alt=media&token=4f35e5bf-0b55-4b10-9abe-b61a5d999e5b",
       alt: "BTS Ani image from Firebase",
-      description: "A short description for Project Alpha",
+      description: "A look into the projects I've worked in.",
       // Replace this link with a live URL (not the Firebase console URL) if you need a clickable link.
       link: "/projects.html"
     },
     {
-        title: "Project Alpha",
+        title: "Interest Page",
         img: "https://firebasestorage.googleapis.com/v0/b/ruben-s-images.firebasestorage.app/o/Hike1.jpg?alt=media&token=4f35e5bf-0b55-4b10-9abe-b61a5d999e5b",
         alt: "BTS Ani image from Firebase",
-        description: "A short description for Project Alpha",
+        description: "These are my hobbies.",
         // Replace this link with a live URL (not the Firebase console URL) if you need a clickable link.
         link: "/interest.html"
       }
       ,{
-        title: "Project Alpha",
+        title: "Courses' Page",
         img: "https://firebasestorage.googleapis.com/v0/b/ruben-s-images.firebasestorage.app/o/lego-lightshow.gif?alt=media&token=4f35e5bf-0b55-4b10-9abe-b61a5d999e5b",
         alt: "BTS Ani image from Firebase",
-        description: "A short description for Project Alpha",
+        description: "The courses I've taken while at UCSD",
         // Replace this link with a live URL (not the Firebase console URL) if you need a clickable link.
         link: "/courses.html"
       }
@@ -31,7 +31,8 @@ const sampleData = [
     localStorage.setItem('projects', JSON.stringify(sampleData));
   }
   
-  const cardContainer = document.getElementById('card-container');
+  const cardContainer = document.getElementById('card-container'); 
+  // const cardContainer = document.getElementsByTagName("card-container");
   const loadLocalButton = document.getElementById('loadLocal');
   const loadRemoteButton = document.getElementById('loadRemote');
   

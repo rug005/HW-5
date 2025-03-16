@@ -17,7 +17,10 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 2rem;
-      background: #f4f4f4;
+      background: hsl(60, 100%, 98%);
+    }
+    .index2-background{
+      border: 2px solid black;
     }
     /* Container layout using CSS grid */
     #card-container {
@@ -25,6 +28,11 @@
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1rem;
     }
+    /* card-container{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    } */
     .btn {
       padding: 0.5rem 1rem;
       margin: 0.5rem;
@@ -39,31 +47,61 @@
     }
     div{
         text-align: center;
+        background: #1e90ff;
     }
     nav.center{
       display:flex; 
       justify-content: center;
       border: solid 2px black;
+      background-color: #71a9e1;
       padding: 2px;
+    }
+    #loadLocal{
+      background-color: #0758a8;
+    }
+    #loadRemote{
+      background-color: #0758a8;
+    }
+    #loadLocal:hover{
+      color:rgb(0, 0, 0);
+      background-color: white;
+    }
+    #loadRemote:hover{
+      color:rgb(0, 0, 0);
+      background-color: white;
+    }
+    a nav{
+      color:rgb(0, 0, 0);
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a nav:hover{
+      background-color: #ffffff;
     }
 
 
   </style>
 </head>
 <body>
+  <div class="index2-background">
   <mainPage>
   <h1>Ruben's Projects</h1>
-  
+  <a href="/index.html">
   <nav class="center">
-    <a href="/index.html"">Home</a>
-  </nav>
+    Home
+  </nav></a>
   <div>
-    <button id="loadLocal" class="btn">Load Local</button>
-    <button id="loadRemote" class="btn">Load Remote</button>
+    <button id="loadLocal" class="btn" style="border: 2px solid #000;">Load Local</button>
+    <button id="loadRemote" class="btn" style="border: 2px solid #000;">Load Remote</button>
   </div>
+
+  <card-container id ="card-container">
+
+  </card-container>
+  <!--
   <div id="card-container">
-    <!-- Project cards will be dynamically inserted here -->
-  </div>
+  </div> 
+  -->
   
   <!-- Include the custom element definition -->
   <script src="project-card.js"></script>
@@ -78,5 +116,6 @@
     }
   </script>
 </mainPage>
+</div>
 </body>
 </html>
