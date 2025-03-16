@@ -40,15 +40,23 @@
     div{
         text-align: center;
     }
-    project-card{
-        text-align: center;
+    nav.center{
+      display:flex; 
+      justify-content: center;
+      border: solid 2px black;
+      padding: 2px;
     }
+
 
   </style>
 </head>
 <body>
+  <mainPage>
   <h1>Ruben's Projects</h1>
-  <project-card>
+  
+  <nav class="center">
+    <a href="/index.html"">Home</a>
+  </nav>
   <div>
     <button id="loadLocal" class="btn">Load Local</button>
     <button id="loadRemote" class="btn">Load Remote</button>
@@ -56,11 +64,19 @@
   <div id="card-container">
     <!-- Project cards will be dynamically inserted here -->
   </div>
-    </project-card>
   
   <!-- Include the custom element definition -->
   <script src="project-card.js"></script>
   <!-- Include our data loading script -->
   <script src="data-loader.js"></script>
+  <script>
+    class mainPage extends HTMLElement{
+      static observedAttributes = ["color", "size"];
+      constructor(){
+        super();
+      }
+    }
+  </script>
+</mainPage>
 </body>
 </html>

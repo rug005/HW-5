@@ -60,6 +60,7 @@ p.right{
 h2, h3{
     font-size: 25px;
     font-weight: bold;
+    text-align: center;
 }
 /* Used in index.html to Home, etc */
 nav{
@@ -126,6 +127,8 @@ img.center{
     
 }
 #frame{
+    display: grid;
+    justify-content: center;
     margin: 0 0;
     padding: 0 0;
     width: 130%;
@@ -200,6 +203,7 @@ img.center{
     display: flex;
     flex-direction: row;
     background-color: #000000;
+    border: 2px solid white;
     color:white;
 }
 img,figcaption {
@@ -215,6 +219,7 @@ p{
 #content {
     display: flex;
     justify-content: center; /* Centers the article in the container */
+    background-color: white;
 }
 
 article {
