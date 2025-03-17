@@ -6,6 +6,7 @@
   <style>
     body { font-family: 'Times New Roman', Times, serif;
         margin: 2em; 
+        background-color: rgb(80, 175, 243);
     }
     label { display: block; 
         margin: 0.5em 0 0.2em; 
@@ -50,7 +51,7 @@
         localStorage.setItem(key, value);
         document.getElementById("result").textContent = `Created item: { ${key}: "${value}" }`;
       } else {
-        document.getElementById("result").textContent = "Please enter both a key and a value.";
+        document.getElementById("result").textContent = "Enter a key and a value.";
       }
     }
 
@@ -59,7 +60,7 @@
       const value = localStorage.getItem(key);
       document.getElementById("result").textContent = value !== null
         ? `Read item: { ${key}: "${value}" }`
-        : "Item not found.";
+        : "Item was NOT found.";
     }
 
     function updateItem() {
@@ -69,7 +70,7 @@
         localStorage.setItem(key, value);
         document.getElementById("result").textContent = `Updated item: { ${key}: "${value}" }`;
       } else {
-        document.getElementById("result").textContent = "Item not found to update.";
+        document.getElementById("result").textContent = "Item NOT found to update.";
       }
     }
 
