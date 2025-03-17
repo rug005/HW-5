@@ -177,9 +177,35 @@ h3.align{
     font-weight: bold;
     border-radius: 2px;
 }
-#box:hover{
+#language-box{
+    border: 3px solid var(--black,black);
+    flex: 1;
+    padding: 1px 5px;
+    margin: 1px 1px;
+    background-color: rgb(199, 194, 194);
+    transition: all 100ms ease-out;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 2px;
+}#language-box:hover{
     background-color: white;
     
+}
+#work-box,#pl-box,#skill-box{
+    border: 3px solid var(--black,black);
+    flex: 1;
+    padding: 1px 5px;
+    margin: 1px 1px;
+    background-color: rgb(199, 194, 194);
+    transition: all 100ms ease-out;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 2px;
+}#work-box:hover,#pl-box:hover,#skill-box:hover{
+    background-color: white;
+}
+#box:hover{
+    background-color: white;   
 }
 #box2 dl,dt,ol,ul,dd{
     border: 3px solid var(--black,black);
