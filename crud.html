@@ -1,11 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>CRUD</title>
+  <style>
+    body { font-family: 'Times New Roman', Times, serif;
+        margin: 2em; 
+    }
+    label { display: block; 
+        margin: 0.5em 0 0.2em; 
+    }
+    input { margin-bottom: 
+        1em; 
+        width: 200px; 
+        padding: 0.5em; 
+    }
+    button { 
+        margin-right: 0.5em; 
+    }
+    #result { 
+        margin-top: 1em; 
+        font-weight: bold; 
+    }
+  </style>
 </head>
 <body>
+  <h1>CRUD Operations</h1>
+  <form id="crudForm">
+    <label for="dataKey">Key:</label>
+    <input type="text" id="dataKey" name="dataKey">
     
+    <label for="dataValue">Value:</label>
+    <input type="text" id="dataValue" name="dataValue">
+    
+    <div>
+      <button type="button" onclick="createItem()">Create</button>
+      <button type="button" onclick="readItem()">Read</button>
+      <button type="button" onclick="updateItem()">Update</button>
+      <button type="button" onclick="deleteItem()">Delete</button>
+    </div>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    function createItem() {
+      const key = document.getElementById("dataKey").value;
+      const value = document.getElementById("dataValue").value;
+      if(key && value) {
+        localStorage.setItem(key, value);
+        document.getElementById("result").textContent = `Created item: { ${key}: "${value}" }`;
+      } else {
+        document.getElementById("result").textContent = "Please enter both a key and a value.";
+      }
+    }
+
+    function readItem() {
+      const key = document.getElementById("dataKey").value;
+      const value = localStorage.getItem(key);
+      document.getElementById("result").textContent = value !== null
+        ? `Read item: { ${key}: "${value}" }`
+        : "Item not found.";
+    }
+
+    function updateItem() {
+      const key = document.getElementById("dataKey").value;
+      if (localStorage.getItem(key) !== null) {
+        const value = document.getElementById("dataValue").value;
+        localStorage.setItem(key, value);
+        document.getElementById("result").textContent = `Updated item: { ${key}: "${value}" }`;
+      } else {
+        document.getElementById("result").textContent = "Item not found to update.";
+      }
+    }
+
+    function deleteItem() {
+      const key = document.getElementById("dataKey").value;
+      localStorage.removeItem(key);
+      document.getElementById("result").textContent = `Deleted item with key: ${key}`;
+    }
+  </script>
 </body>
 </html>
