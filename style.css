@@ -207,7 +207,15 @@ h3.align{
 #box:hover{
     background-color: white;   
 }
-#box2 dl,dt,ol,ul,dd{
+#ul-box dl,dt,ol,ul,dd{
+    border: 3px solid var(--black,black);
+    padding: 2px 40px;
+    background-color: white;
+    margin: 1px 1px;
+    font-weight: bold;
+    font-size: 30px;
+}
+#ol-box dl,dt,ol,ul,dd{
     border: 3px solid var(--black,black);
     padding: 2px 40px;
     background-color: white;
