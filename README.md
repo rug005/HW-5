@@ -1,5 +1,13 @@
 # HW5
+    For this homework assignment I ended up fixing issues that has to do
+with my code not being wellformed. I also implemented some JavaScript
+to make my website look nicer and easier to use. I also worked on the
+data loader and local loader (project card) implementation. 
 
+
+
+
+ ----- EXTRA -----
 The purpose of this website is to showcase my skills and accomplishments to my future recruiters.
 I started of with 
 index.html
