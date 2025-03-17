@@ -6,31 +6,7 @@
         <link rel="stylesheet" href="style.css">
     <title> Ruben's Website </title>
 
-    <script>
-        /* Gets element theme-toggle */
-        const themeToggle = document.getElementById("theme-toggle-id");
-        const body = document.body;
 
-
-        if (localStorage.getItem("theme") == "dark") {
-            body.classList.add("dark-mode");
-            themeToggle.textContent = "🌙";
-            themeToggle.style.color = "black";
-        }
-        
-        themeToggle.addEventListener("click", () => {
-            body.classList.toggle("dark-mode");
-            if (body.classList.contains("dark-mode")) {
-                localStorage.setItem("theme", "dark");
-                themeToggle.textContent = "🌙";
-                themeToggle.style.color = "black";
-            } else {
-                localStorage.setItem("theme", "light");
-                themeToggle.textContent = "☀️";
-                themeToggle.style.color = "light";
-            }
-        });
-    </script>
    </head>
    
     <body style="background-color: #657695;">
@@ -48,7 +24,7 @@
                 <a href="https://www.linkedin.com/in/ruben-gonzalez-1479b0169">Linkedin</a> 
                 <a href="mailto:rug005@ucsd.edu">Email</a> 
                 -->
-                <button id="theme-toggle-id">☀️</button>
+                <!-- <button id="themeToggle" onclick="toggleTheme()">☀️</button> -->
                 <!-- 🌙 -->
             </strong>
             </nav>
@@ -174,7 +150,7 @@
                 </list-text>
         </dl>
         </details>
-        <footer id="date" style="align-items: center;"><pre> Last Updated March 14<sup>th</sup>, 2025 </pre></footer>
+        <footer id="date" style="align-items: center;"><pre> Last Updated March 16<sup>th</sup>, 2025 </pre></footer>
         </div>
     </div>  
 </body>
@@ -183,16 +159,6 @@
         
        <!--  <h3 id="center-title"><a href = "/projects.html"> Contact </a></h3> -->
     
-           <script>
-            var msg = `<p><b>Page Title: </b>` + document.title + `<br/>`;
-            msg += `last modified: </b>` + document.lastModified + `</p>`;
-            var el = document.getElementById('footer');
-            el.innerHTML = msg;
-           </script>
-    
-            
-
-
     <script>
         /* Inside Skills > JavaScript, On click changes from "Click Me" text to "Thank you" */
         let buttonSwitch = document.getElementById("style-button");

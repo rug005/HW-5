@@ -216,6 +216,7 @@ h3.align{
     text-align: center;
     color: #ffffff;
     background-color: var(--grey-blue,grey);
+    border: 2px solid #000;
 }
 
 @font-face {

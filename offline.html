@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Offline Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style media="screen">
+		body {
+			margin: 0 auto;
+			width:  90vw;
+		}
+	</style>
+</head>
+
+<body>1`
+
+<h1>Uh oh! You're Offline</h1>
+
+<p>May strong WiFi return to you soon!</p>
+
+
+<script>
+	if (navigator && navigator.serviceWorker) {
+		navigator.serviceWorker.register('sw.js');
+	}
+</script>
+</body>
+</html>
