@@ -177,7 +177,20 @@ h3.align{
     background-color: white;
     
 }
-#box2{
+#box2 dl,dt,ol,ul,dd{
+    border: 3px solid var(--black,black);
+    padding: 2px 40px;
+    background-color: white;
+    margin: 1px 1px;
+    font-weight: bold;
+    font-size: 30px;
+}
+.description-p{
+    font-size: 16px;
+    font-weight: 200;
+    font-family: 'Times New Roman', Times, serif;
+}
+dd{
     border: 3px solid var(--black,black);
     padding: 2px 40px;
     background-color: white;
@@ -199,12 +212,11 @@ h3.align{
         opacity: 50;
     }
 }
-#center-title{
+#center-title,#work-title,#skills-title{
     text-align: center;
     padding: 1px 1px;
     background-color: rgb(217, 217, 217);
     margin-bottom: 1px;
-    
     border-style: outset;
 }
 #white-border{
