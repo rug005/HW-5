@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRUD Operations with LocalStorage</title>
+  <style>
+    
+    body { 
+        font-family: Arial, sans-serif; 
+        margin: 20px;
+     }
+    form {
+         margin-bottom: 20px; 
+        }
+    input, button { 
+        padding: 5px; 
+        margin: 5px;
+     }
+    table { width: 100%; 
+        border-collapse: collapse; 
+    }
+    th, td { padding: 10px; 
+        border: 1px solid #ccc; 
+        text-align: left;
+     }
+    .hidden { display: 
+        none; 
+    }
+  </style>
+</head>
+<body>
+  <h1>CRUD LocalStorage</h1>
+  
+  <form id="crudForm">
+    <input type="hidden" id="itemId" value="">
+    <label for="itemName">Item Name:</label>
+    <input type="text" id="itemName" required>
+    <button type="submit" id="saveButton">Save</button>
+    <button type="button" id="cancelButton" class="hidden">Cancel</button>
+  </form>
+
+  <!-- Read: Display items -->
+  <table>
+    <thead>
+      <tr>
+        <th>Item ID</th>
+        <th>Item Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="itemTableBody">
+      <!-- Items will be dynamically inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById('crudForm');
+    const itemNameInput = document.getElementById('itemName');
+    const itemIdInput = document.getElementById('itemId');
+    const saveButton = document.getElementById('saveButton');
+    const cancelButton = document.getElementById('cancelButton');
+    const itemTableBody = document.getElementById('itemTableBody');
+
+    const STORAGE_KEY = 'crudItems';
+
+    // Retrieve items from localStorage
+    function getItems() {
+      const items = localStorage.getItem(STORAGE_KEY);
+      return items ? JSON.parse(items) : [];
+    }
+
+    // Save items array back to localStorage
+    function saveItems(items) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    }
+
+    // Render items in the table
+    function renderItems() {
+      const items = getItems();
+      itemTableBody.innerHTML = '';
+      items.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>
+            <button onclick="editItem(${item.id})">Edit</button>
+            <button onclick="deleteItem(${item.id})">Delete</button>
+          </td>
+        `;
+        itemTableBody.appendChild(tr);
+      });
+    }
+
+    // Handle form submission for create or update
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const items = getItems();
+      const itemId = itemIdInput.value;
+      const name = itemNameInput.value;
+
+      if (itemId) {
+        // Update item
+        const updatedItems = items.map(item => {
+          if (item.id == itemId) {
+            return { ...item, name };
+          }
+          return item;
+        });
+        saveItems(updatedItems);
+      } else {
+        // Create new item with a unique id
+        const newId = items.length > 0 ? items[items.length - 1].id + 1 : 1;
+        items.push({ id: newId, name });
+        saveItems(items);
+      }
+      resetForm();
+      renderItems();
+    });
+
+    // Edit an item: fill form with item data
+    function editItem(id) {
+      const items = getItems();
+      const item = items.find(i => i.id === id);
+      if (item) {
+        itemIdInput.value = item.id;
+        itemNameInput.value = item.name;
+        saveButton.textContent = 'Update';
+        cancelButton.classList.remove('hidden');
+      }
+    }
+
+    // Delete an item
+    function deleteItem(id) {
+      let items = getItems();
+      items = items.filter(item => item.id !== id);
+      saveItems(items);
+      renderItems();
+    }
+
+    // Reset form to default state
+    function resetForm() {
+      itemIdInput.value = '';
+      itemNameInput.value = '';
+      saveButton.textContent = 'Save';
+      cancelButton.classList.add('hidden');
+    }
+
+    
+    cancelButton.addEventListener('click', resetForm);
+
+    renderItems();
+
+   
+    window.editItem = editItem;
+    window.deleteItem = deleteItem;
+  </script>
+</body>
+</html>

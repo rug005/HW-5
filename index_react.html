@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD Operations with React</title>
+  <style>
+    
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    form { margin-bottom: 20px; }
+    input, button { padding: 5px; margin: 5px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+  </style>
+  <!-- Include React, ReactDOM, and Babel from CDN -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>CRUD Operations with React</h1>
+  <div id="root"></div>
+
+  <!-- Analysis Section -->
+  <div>
+    <h2>Analysis</h2>
+    <p>
+        After changing the approach, the amount of code is reduced. The reason why is due to the component based structure and it’s effect state management.
+    
+    
+    </p>
+  </div>
+
+  <script type="text/babel">
+    const STORAGE_KEY = 'crudItemsReact';
+
+    function App() {
+      const [items, setItems] = React.useState(() => {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        return stored ? JSON.parse(stored) : [];
+      });
+      const [itemName, setItemName] = React.useState('');
+      const [editId, setEditId] = React.useState(null);
+
+      // Update localStorage whenever items change
+      React.useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      }, [items]);
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (editId !== null) {
+          setItems(items.map(item => item.id === editId ? { ...item, name: itemName } : item));
+        } else {
+          const newId = items.length > 0 ? items[items.length - 1].id + 1 : 1;
+          setItems([...items, { id: newId, name: itemName }]);
+        }
+        setItemName('');
+        setEditId(null);
+      };
+
+      const handleEdit = (id) => {
+        const item = items.find(item => item.id === id);
+        if (item) {
+          setEditId(id);
+          setItemName(item.name);
+        }
+      };
+
+      const handleDelete = (id) => {
+        setItems(items.filter(item => item.id !== id));
+      };
+
+      const handleCancel = () => {
+        setEditId(null);
+        setItemName('');
+      };
+
+      return (
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input 
+              type="text" 
+              value={itemName} 
+              onChange={e => setItemName(e.target.value)} 
+              placeholder="Item Name" 
+              required 
+            />
+            <button type="submit">{editId ? 'Update' : 'Save'}</button>
+            {editId && <button type="button" onClick={handleCancel}>Cancel</button>}
+          </form>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Item Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map(item => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.name}</td>
+                  <td>
+                    <button onClick={() => handleEdit(item.id)}>Edit</button>
+                    <button onClick={() => handleDelete(item.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
